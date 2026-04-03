@@ -14,6 +14,7 @@ import { EventsTab } from "../components/admin/EventsTab";
 import { PeopleTab } from "../components/admin/PeopleTab";
 import { TicketsTab } from "../components/admin/TicketsTab";
 import { TimetableTab } from "../components/admin/TimetableTab";
+import { UserManagementTab } from "../components/admin/UserManagementTab";
 import { useInternetIdentity } from "../hooks/useInternetIdentity";
 import { useGetAllEvents, useIsCallerAdmin } from "../hooks/useQueries";
 
@@ -135,6 +136,7 @@ function AdminContent() {
   if (path === "/admin/people") return <PeopleTab />;
   if (path === "/admin/timetable") return <TimetableTab />;
   if (path === "/admin/tickets") return <TicketsTab />;
+  if (path === "/admin/users") return <UserManagementTab />;
   return <DashboardHome />;
 }
 

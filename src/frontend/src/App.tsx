@@ -77,6 +77,12 @@ const adminTicketsRoute = createRoute({
   component: AdminDashboard,
 });
 
+const adminUsersRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/admin/users",
+  component: AdminDashboard,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   eventDetailRoute,
@@ -86,6 +92,7 @@ const routeTree = rootRoute.addChildren([
   adminPeopleRoute,
   adminTimetableRoute,
   adminTicketsRoute,
+  adminUsersRoute,
 ]);
 
 const router = createRouter({ routeTree });

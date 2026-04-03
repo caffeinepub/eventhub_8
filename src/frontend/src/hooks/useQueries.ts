@@ -1,3 +1,4 @@
+import { Principal } from "@icp-sdk/core/principal";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type {
   Event,
@@ -9,10 +10,12 @@ import type {
   TimetableEntry,
   TimetableId,
 } from "../backend";
+import { UserRole } from "../backend";
 import { useActor } from "./useActor";
 
 export type { Event, Person, TimetableEntry, Ticket, PersonRole };
 export type { EventId, PersonId, TimetableId };
+export { UserRole };
 
 // ─── Events ────────────────────────────────────────────────────────────────
 
@@ -252,5 +255,22 @@ export function useIsCallerAdmin() {
       return actor.isCallerAdmin();
     },
     enabled: !!actor && !actorFetching,
+  });
+}
+
+export function useAssignUserRole() {
+  const { actor } = useActor();
+  return useMutation({
+    mutationFn: async ({
+      principal,
+      role,
+    }: {
+      principal: string;
+      role: UserRole;
+    }) => {
+      if (!actor) throw new Error("Actor not available");
+      const p = Principal.fromText(principal);
+      return actor.assignCallerUserRole(p, role);
+    },
   });
 }

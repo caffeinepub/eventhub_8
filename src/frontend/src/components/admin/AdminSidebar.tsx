@@ -5,6 +5,7 @@ import {
   Clock,
   LayoutDashboard,
   LogOut,
+  ShieldCheck,
   Ticket,
   Users,
 } from "lucide-react";
@@ -16,6 +17,7 @@ const navItems = [
   { to: "/admin/people" as const, label: "Speakers & Celebs", icon: Users },
   { to: "/admin/timetable" as const, label: "Timetable", icon: Clock },
   { to: "/admin/tickets" as const, label: "Tickets", icon: Ticket },
+  { to: "/admin/users" as const, label: "User Management", icon: ShieldCheck },
 ];
 
 export function AdminSidebar() {
